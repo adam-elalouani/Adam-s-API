@@ -2,10 +2,13 @@ const express = require('express')
 const app = express()
 app.use(express.json());
 
+let arr = {"array": [1,2,3]}
+
 app.get('/add',function(req,res){
     console.log(req.body.array)
-    const sum = res.reduce((accumulator, currentValue) => accumulator + currentValue,0).toString();
-    res.json({sum});
+    const array = array => array["array"].reduce((accumulator, currentValue) => accumulator + currentValue,0)
+    let answer = add(arr).toString();
+    res.send(answer);
 })
 
 app.get('/product', function(req,res){
@@ -24,6 +27,7 @@ app.get('/min', function(req,res){
     console.log(req.body.array)
    const min = Math.min(...array);
     res.json({min})
+    
 })
 
 app.get('/max', function(req,res){
